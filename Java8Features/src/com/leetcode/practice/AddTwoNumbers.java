@@ -23,19 +23,22 @@ public class AddTwoNumbers {
 		System.out.println();
 	}
 
-	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-		ListNode dummy = new ListNode(0);
-		int carry = 0;
-		ListNode cur = dummy;
-		while (l1 != null || l2 != null || carry != 0) {
-			int s = (l1 == null ? 0 : l1.val) + (l2 == null ? 0 : l2.val) + carry;
-			carry = s / 10;
-			cur.next = new ListNode(s % 10);
-			cur = cur.next;
-			l1 = l1 == null ? null : l1.next;
-			l2 = l2 == null ? null : l2.next;
+	public static ListNode addTwoNumbers(ListNode list1, ListNode list2) {
+		ListNode resultHead = new ListNode(0);
+		int carryOver = 0;
+		ListNode currentNode = resultHead;
+
+		while (list1 != null || list2 != null || carryOver != 0) {
+			int sum = (list1 == null ? 0 : list1.val) + (list2 == null ? 0 : list2.val) + carryOver;
+			carryOver = sum / 10;
+			currentNode.next = new ListNode(sum % 10);
+			currentNode = currentNode.next;
+
+			list1 = list1 == null ? null : list1.next;
+			list2 = list2 == null ? null : list2.next;
 		}
-		return dummy.next;
+
+		return resultHead.next;
 	}
 
 }
