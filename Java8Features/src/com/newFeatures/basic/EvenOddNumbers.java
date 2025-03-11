@@ -15,6 +15,12 @@ public class EvenOddNumbers {
 		List<Integer> oddList = list.stream().filter(n -> n % 2 != 0).collect(Collectors.toList());
 		System.out.println(
 				"List of odd numbers: " + Arrays.toString(oddList.toArray()).replace("[", "").replace("]", ""));
+
+		String num = "12345678";
+		List<Integer> evenListFromString = num.chars().map(Character::getNumericValue).filter(n -> n % 2 == 0).boxed()
+				.collect(Collectors.toList());
+		System.out.println("evenListFromString:::" + evenListFromString);
+
 	}
 
 }
